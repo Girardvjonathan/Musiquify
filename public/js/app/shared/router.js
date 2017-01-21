@@ -93,6 +93,25 @@ angular.module('ds.router', [])
                     url: '/products/',
                     abstract: true
                 })
+                .state('base.createTender', {
+                    views: {
+                        'main@':{
+                            templateUrl: 'js/app/tender/templates/create-tender.html',
+                            controller: 'TenderCtrl'
+                        }
+                    },
+                    url: '/tender/create/',
+                    resolve:{
+                        // this will block controller loading until the application has been initialized with
+                        //  all required configuration (language, currency)
+                        /* jshint ignore:start */
+                        initialized: ['ConfigSvc',function(ConfigSvc) {
+                            return ConfigSvc.initializeApp();
+                        }]
+                        /* jshint ignore:end */
+
+                    }
+                })
                 .state('base.category', {
                     url: '/ct/:catName',
                     views: {

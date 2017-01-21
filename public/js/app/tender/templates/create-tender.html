@@ -1,0 +1,39 @@
+<!-- directive: force-scroll -->
+<div ng-cloak>
+
+
+	<!-- bread crumbs -->
+	<ybreadcrumb yitem="category" size="large"></ybreadcrumb>
+
+	<section class="white">
+
+		<!-- page title -->
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<h1 class="pageTitle productListTitle"><span ng-if="category.name">{{ category.name }}</span><span ng-if="!category.name">Request an offering</span></h1>
+			</div>
+		</div>
+		<!-- Modal -->
+		<form name="addressForm" novalidate ng-cloak>
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Details</h4>
+			</div>
+			<div class="modal-body" stop-event="touchend">
+				<input type="hidden" name="account" ng-model="address.account">
+
+				<localized-addresses type="addAddress"></localized-addresses>
+
+				<!-- Errors -->
+				<ul ng-if="errors && errors.length" class="list-unstyled text-danger">
+					<li ng-repeat="error in errors">{{error.message}}</li>
+				</ul>
+
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" ng-click="closeAddressModal()" class="btn btn-secondary btn-lg">{{'CANCEL' | translate}}</button>
+				<buttion id="save-address-btn" class="btn btn-primary btn-lg" ng-click="save(address, addressForm.$valid, addressForm.$name, addressForm)">{{'SAVE' | translate}}</button>
+				</div>
+			</form>
+		</section>
+	</div>
