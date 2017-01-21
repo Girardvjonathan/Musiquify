@@ -85,6 +85,13 @@ angular.module('ds.products')
                 $scope.noShippingRates = true;
             }
 
+
+            if ($scope.category[0].name === 'Request for Tender') {
+                $scope.addToCartLabel = 'Tender';
+            } else {
+                $scope.addToCartLabel = 'Add to cart';
+            }
+
             //Event that product is loaded
             $scope.$emit('product:opened', product);
 
