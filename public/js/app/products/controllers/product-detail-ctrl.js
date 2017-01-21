@@ -17,8 +17,8 @@ angular.module('ds.products')
      * Listens to the 'cart:updated' event.  Once the item has been added to the cart, and the updated
      * cart information has been retrieved from the service, the 'cart' view will be shown.
      */
-    .controller('ProductDetailCtrl', ['$scope', '$rootScope', '$location', 'CartSvc', 'product', 'lastCatId', 'variantId', 'GlobalData', 'CategorySvc','$filter', '$uibModal', 'shippingZones', 'Notification', 'ProductExtensionHelper', 'ProductVariantsHelper', 'variants', 'variantPrices', 'productFactory', 'FeeSvc',
-        function($scope, $rootScope, $location, CartSvc, product, lastCatId, variantId, GlobalData, CategorySvc, $filter, $uibModal, shippingZones, Notification, ProductExtensionHelper, ProductVariantsHelper, variants, variantPrices, productFactory, FeeSvc) {
+    .controller('ProductDetailCtrl', ['$scope', '$rootScope', '$location', 'account', 'CartSvc', 'product', 'lastCatId', 'variantId', 'GlobalData', 'CategorySvc','$filter', '$uibModal', 'shippingZones', 'Notification', 'ProductExtensionHelper', 'ProductVariantsHelper', 'variants', 'variantPrices', 'productFactory', 'FeeSvc',
+        function($scope, $rootScope, $location, account, CartSvc, product, lastCatId, variantId, GlobalData, CategorySvc, $filter, $uibModal, shippingZones, Notification, ProductExtensionHelper, ProductVariantsHelper, variants, variantPrices, productFactory, FeeSvc) {
             var modalInstance;
 
             $scope.activeTab = 'description';
@@ -138,9 +138,9 @@ angular.module('ds.products')
             /** Add the product to the cart.  'Buy' button is disabled while cart update is in progress. */
             $scope.addToCartFromDetailPage = function () {
                 $scope.error = false;
-                $scope.buyButtonEnabled = false;
 
-                var cartItem = {id:$scope.product.id};
+                console.log('idArtist= ' + account.id + ' idTender= ' + $scope.product.id);
+/*                var cartItem = {id:$scope.product.id};
 
                 if(!_.isEmpty($scope.selectedVariant)){
                     cartItem.itemYrn = $scope.selectedVariant.yrn;
@@ -154,7 +154,7 @@ angular.module('ds.products')
                     $scope.error = 'ERROR_ADDING_TO_CART';
                 }).finally(function() {
                     $scope.buyButtonEnabled = true;
-                });
+                });*/
             };
 
             $scope.changeQty = function () {

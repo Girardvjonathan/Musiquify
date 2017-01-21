@@ -146,6 +146,9 @@ angular.module('ds.router', [])
                         }
                     },
                     resolve: {
+                      account: ['AccountSvc', function(AccountSvc) {
+                          return AccountSvc.account();
+                      }],
                         product: ['$stateParams', 'PriceProductREST', 'CategorySvc', 'initialized', function ($stateParams, PriceProductREST, CategorySvc, initialized) {
                             if(initialized){
                                 return PriceProductREST.ProductDetails.one('productdetails', $stateParams.productId).customGET('', {expand: 'media'})
@@ -163,7 +166,7 @@ angular.module('ds.router', [])
                             }
 
                         }],
-                        
+
                         variants: ['$stateParams', 'initialized', '$http', 'SiteConfigSvc',
                             function ($stateParams, initialized, $http, SiteConfigSvc) {
                                 if (initialized) {
@@ -399,5 +402,3 @@ angular.module('ds.router', [])
             $locationProvider.hashPrefix('!');
         }
     ]);
-
-
