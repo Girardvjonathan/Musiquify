@@ -86,7 +86,7 @@ angular.module('ds.shared')
 
             $scope.goToCreateForTenderForm = function() {
                 console.log('Where is alex?');
-                $state.go('base.account');
+                $state.go('base.tender.create');
             };
 
         }]);
