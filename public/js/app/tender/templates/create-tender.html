@@ -21,7 +21,14 @@
 			<div class="modal-body" stop-event="touchend">
 				<input type="hidden" name="account" ng-model="address.account">
 
-				<localized-addresses type="addAddress"></localized-addresses>
+				<!-- <localized-addresses type="addAddress"></localized-addresses> -->
+				<div class="form-group input-group"
+				ng-class="{'has-error': addressForm.contactName.$invalid && (addressForm.contactName.$dirty  || showPristineErrors)}">
+					<label class="input-group-addon control-label" for="contactName">{{'FULL_NAME' | translate}}</label>
+					<input inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}" type="text" class="form-control ui-autocomplete" id="contactName" name="contactName" ng-model="address.contactName" required autocomplete="on" ng-keydown="saveOnEnter($event, address, addressForm.$valid, addressForm.$name)"
+					ng-required="addressForm.country.$viewValue.id === 'CA'">
+				</div>
+
 
 				<!-- Errors -->
 				<ul ng-if="errors && errors.length" class="list-unstyled text-danger">
@@ -31,8 +38,7 @@
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" ng-click="closeAddressModal()" class="btn btn-secondary btn-lg">{{'CANCEL' | translate}}</button>
-				<buttion id="save-address-btn" class="btn btn-primary btn-lg" ng-click="save(address, addressForm.$valid, addressForm.$name, addressForm)">{{'SAVE' | translate}}</button>
+				<buttion id="save-address-btn" class="btn btn-primary btn-lg" ng-click="createTender()">Create</button>
 				</div>
 			</form>
 		</section>

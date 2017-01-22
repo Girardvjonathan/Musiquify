@@ -25,6 +25,7 @@ angular.module('ds.shared')
         function SiteConfigSvcProvider(appConfig) {
 
             var apiPath, tenantId = '';
+            var tenderApiPath = 'google.com';
 
             // handle dynamic tenant data.
             if (!_.isEmpty(appConfig) && !_.isEmpty(appConfig.storeTenant())) {
@@ -102,6 +103,10 @@ angular.module('ds.shared')
 
                 indexing: {
                     baseUrl: 'https://' + apiPath + '/hybris/search-algolia/v1/' + tenantId
+                },
+
+                tenders: {
+                    baseUrl: 'https://' + tenderApiPath + '/tender'
                 }
             };
 

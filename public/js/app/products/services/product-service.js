@@ -36,6 +36,11 @@ angular.module('ds.products')
             },
             getProduct:  function(params) {
               return PriceProductREST.Products.one('products', params.productId).get();
+            },
+            createProduct:  function(params) {
+              return PriceProductREST.Products.one('products', params.productId).post(params).then(function(data){
+                console.log(data);
+              });
             }
         };
 }]);

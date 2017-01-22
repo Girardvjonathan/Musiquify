@@ -14,8 +14,12 @@
     'use strict';
 
     angular.module('ds.home')
-        .controller('TenderCtrl', ['$scope',
-            function ($scope) {
+        .controller('TenderCtrl', ['$scope', 'TenderSvc',
+            function ($scope, TenderSvc) {
                 $scope.test = true;
+                $scope.createTender = function(){
+                    TenderSvc.createTender({foo:'bar'});
+                };
+
             }]);
 })();
