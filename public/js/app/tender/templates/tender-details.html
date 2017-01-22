@@ -4,30 +4,25 @@
 <div class="tenderDetailsContainer" ng-cloak>
     <section class="white">
         <div class="row">
-
-
             <!-- product details -->
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="tender-details">
-
                     <!-- product name -->
                     <h1 class="pageTitle">{{tender.title}}</h1>
 
-                    <div >
-                            <span id="start-date" class="startDate">{{tender.startDate}}</span>
-                            <span id="end-date" class="endDate">{{tender.endDate}}</span>
-                            <span id="time-lenght" class="timeLength">{{tender.timeLength}}</span>
-                            <span id="type" class="type">{{tender.type}}</span>
-                            <span id="min-price" class="minPrice">{{tender.minPrice}}</span>
-                            <span id="max-price" class="maxPrice">{{tender.maxPrice}}</span>
-                            <span id="description" class="description">{{tender.description}}</span>
-                            <span id="location" class="location">{{tender.location}}</span>
-                            <span id="musical-style" class="musicalStyle">{{tender.musicalStyle}}</span>
-                            <span ng-if="product.prices[0].measurementUnit" class="price">/</span>
+                    <div class="col-md-6">
+                        <div id="start-date" class="startDate">Start date: {{tender.startDate}}</div>
+                        <div id="end-date" class="endDate">End date: {{tender.endDate}}</div>
+                        <div id="time-lenght" class="timeLength">Length: {{tender.timeLength}}</div>
+                        <div id="type" class="type">Work type: {{tender.type}}</div>
+                        <div id="min-price" class="minPrice">Price range: ${{tender.minPrice}} - ${{tender.maxPrice}}</div>
+                        <div id="description" class="description">Description: {{tender.description}}</div>
+                        <div id="location" class="location">Location: {{tender.location}}</div>
+                        <div id="musical-style" class="musicalStyle">Music style: {{tender.musicalStyle}}</div>
                     </div>
 
 
-                    <div>
+                    <div class="col-md-6">
                         <form action="" class="tenderPanel">
 
                             <!-- product quantity -->
@@ -35,7 +30,31 @@
                                 <div class="col-md-8 col-md-offset-2 custom-select-container">
                                     <div class="form-group input-group qty">
                                         <label class="input-group-addon control-label" for="price">Your Price</label>
-                                        <input quantity-input type="number" id="price" min="1" step="1" pattern="\d*" class="form-control quantity">
+                                        <input ng-model="offer.price" quantity-input type="number" id="price" min="1" step="1" pattern="\d*" class="form-control quantity">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-md-offset-2 custom-select-container">
+                                    <div class="form-group input-group qty">
+                                        <label class="input-group-addon control-label" for="price">Your Name</label>
+                                        <input ng-model="offer.name" type="text" id="name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-md-offset-2 custom-select-container">
+                                    <div class="form-group input-group qty">
+                                        <label class="input-group-addon control-label" for="price">Your Description</label>
+                                        <input ng-model="offer.description" type="text" id="name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-md-offset-2 custom-select-container">
+                                    <div class="form-group input-group qty">
+                                        <label class="input-group-addon control-label" for="price">Years of experience</label>
+                                        <input ng-model="offer.experience" type="text" id="name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-md-offset-2 custom-select-container">
+                                    <div class="form-group input-group qty">
+                                        <label class="input-group-addon control-label" for="price">Website</label>
+                                        <input ng-model="offer.link" type="text" id="name" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -53,47 +72,26 @@
 
                                 <!-- add to cart -->
                                 <div class="col-md-8 col-md-offset-2">
-                                    <button id="submit" type="button" class="btn btn-primary btn-block submitButton" ng-click="">Submit</button>
+                                    <button id="submit" type="button" class="btn btn-primary btn-block submitButton" ng-click="postTender()">Submit</button>
                                 </div>
                             </div>
                         </form>
 
                     </div>
+
+                    <hr/>
+
+                    <section style="margin-top:60px" class="row">
+                        <h2>Current offerings</h2>
+                        <article style="border-bottom: 1px solid black; margin-top: 20px;" ng-repeat="tenderer in tender.tenderer">
+                            <p>Artist: {{tenderer.name}}</p>
+                            <p>Price offered: {{tenderer.price}}</p>
+                            <p>Description: {{tenderer.description}}</p>
+                        </article>
+                    </section>
                 </div>
             </div>
 
-        </div>
-    </section>
-
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <ul class="nav nav-tabs">
-                <li role="presentation" ng-class="{active: activeTab === 'description'}">
-                    <a href="" ng-click="openTab('description'); $event.preventDefault();">{{'DESCRIPTION_TAB' | translate}}</a>
-                </li>
-
-                <li role="presentation" ng-class="{active: activeTab === 'details'}">
-                    <a href="" ng-click="openTab('details'); $event.preventDefault();">{{'DETAILS_TAB' | translate}}</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <section class="gray">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane" ng-class="{active: activeTab === 'description'}" id="description">
-                        <!-- product description -->
-                        <div class="headline">{{'PRODUCT_DESCRIPTION' | translate}}</div>
-
-                        <div id="product-description-text" class="description">
-                            {{tender.description}}
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 </div>
->>>>>>> 6f43477a739be5e352b02cf743e0aafb9e00c1da

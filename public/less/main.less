@@ -31,9 +31,21 @@
 .thumbnails img.active {border-color: @secondary-blue}
 
 .tender-item {width: 150px; height: 150px; padding: 15px; background: @defaultblue; color: white !important; text-decoration: none !important;
+	vertical-align: top;
+	display: inline-block;
+	margin: 20px;
+	cursor: pointer;
+
 	a{text-decoration: none;}
-	h1 {margin: 0px; font-size: 12px;}
+	h1 {margin: 0px; font-size: 14px; font-weight: bold;}
 	h2 {font-size: 10px; margin: 0px;}
+
+
+	&:hover{
+		background: @black;
+		h1, h2 {color: white !important;}
+		transition: all 0.5s;
+	}
 }
 
 .logo > span {
