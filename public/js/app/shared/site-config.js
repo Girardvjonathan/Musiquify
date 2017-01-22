@@ -26,7 +26,7 @@ angular.module('ds.shared')
 
             var apiPath, tenantId = '';
             //var tenderApiPath = 'demo2574660.mockable.io';
-            var tenderApiPath = 'localhost:9002/api';
+            var tenderApiPath = 'https://offering-api.herokuapp.com/api';
 
             // handle dynamic tenant data.
             if (!_.isEmpty(appConfig) && !_.isEmpty(appConfig.storeTenant())) {
