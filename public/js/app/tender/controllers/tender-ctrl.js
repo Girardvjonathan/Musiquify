@@ -17,9 +17,8 @@
         .controller('TenderCtrl', ['$scope', '$state', 'TenderSvc', 'account', 'AuthDialogManager', 'GlobalData',
             function ($scope, $state, TenderSvc, account, AuthDialogManager, GlobalData) {
                 var modal;
-                $scope.tender = {
+                $scope.tender = {};
 
-                };
 
                 var _login = function(dOpts, opts) {
                     modal = AuthDialogManager.open(dOpts, opts).then(function(){
@@ -31,14 +30,17 @@
 
                 };
 
+
+
                 if (!GlobalData.user.isAuthenticated) {
                     _login({windowClass:'mobileLoginModal'}, {required: true});
                 }
 
+
                 $scope.createTender = function(){
-                    TenderSvc.createTender({foo:'bar'});
-                    
+                    TenderSvc.createTender($scope.tender);
                 };
+
 
 
             }]);

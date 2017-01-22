@@ -44,7 +44,7 @@ angular.module('ds.home')
             },
 
             getTenders:  function() {
-              return TenderREST.Tenders.all('tender').get();
+              return TenderREST.Tenders.all('tenders').getList();
             },
 
             getTender:  function(params) {

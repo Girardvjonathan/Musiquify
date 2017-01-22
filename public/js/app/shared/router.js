@@ -105,7 +105,7 @@ angular.module('ds.router', [])
                         account: ['AccountSvc', function(AccountSvc) {
                             return AccountSvc.account();
                         }],
-                        
+
                         // this will block controller loading until the application has been initialized with
                         //  all required configuration (language, currency)
                         /* jshint ignore:start */
@@ -116,6 +116,29 @@ angular.module('ds.router', [])
 
                     }
                 })
+                .state('base.tenders', {
+                    views: {
+                        'main@':{
+                            templateUrl: 'js/app/tender/templates/tender-list.html',
+                            controller: 'TendersCtrl'
+                        }
+                    },
+                    url: '/tenders/',
+                    resolve:{
+                        account: ['AccountSvc', function(AccountSvc) {
+                            return AccountSvc.account();
+                        }],
+                        
+                        // this will block controller loading until the application has been initialized with
+                        //  all required configuration (language, currency)
+                        /* jshint ignore:start */
+                        initialized: ['ConfigSvc',function(ConfigSvc) {
+                            return ConfigSvc.initializeApp();
+                        }]
+                        /* jshint ignore:end */
+                    }
+                })
+
                 .state('base.category', {
                     url: '/ct/:catName',
                     views: {
