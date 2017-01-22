@@ -14,12 +14,28 @@
     'use strict';
 
     angular.module('ds.home')
-        .controller('TenderCtrl', ['$scope', 'TenderSvc',
-            function ($scope, TenderSvc) {
-                $scope.test = true;
+        .controller('TenderCtrl', ['$scope', '$state', 'TenderSvc', 'account', 'AuthDialogManager', 'GlobalData',
+            function ($scope, $state, TenderSvc, account, AuthDialogManager, GlobalData) {
+                var modal;
+
+                var _login = function(dOpts, opts) {
+                    modal = AuthDialogManager.open(dOpts, opts).then(function(){
+                        // we should be redirecting to the homepage on dismiss or something
+                        // but the promise is weird so we do nothing for now.
+                    }, function() {
+                        $state.go('base.home');
+                    });
+
+                };
+
+                if (!GlobalData.user.isAuthenticated) {
+                    _login({windowClass:'mobileLoginModal'}, {required: true});
+                }
+
                 $scope.createTender = function(){
                     TenderSvc.createTender({foo:'bar'});
                 };
+
 
             }]);
 })();

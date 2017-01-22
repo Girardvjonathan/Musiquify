@@ -25,7 +25,7 @@ angular.module('ds.shared')
         function SiteConfigSvcProvider(appConfig) {
 
             var apiPath, tenantId = '';
-            var tenderApiPath = 'google.com';
+            var tenderApiPath = 'demo2574660.mockable.io';
 
             // handle dynamic tenant data.
             if (!_.isEmpty(appConfig) && !_.isEmpty(appConfig.storeTenant())) {
@@ -106,7 +106,7 @@ angular.module('ds.shared')
                 },
 
                 tenders: {
-                    baseUrl: 'https://' + tenderApiPath + '/tender'
+                    baseUrl: 'http://' + tenderApiPath
                 }
             };
 

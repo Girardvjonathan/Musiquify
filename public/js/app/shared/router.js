@@ -102,6 +102,10 @@ angular.module('ds.router', [])
                     },
                     url: '/tender/create/',
                     resolve:{
+                        account: ['AccountSvc', function(AccountSvc) {
+                            return AccountSvc.account();
+                        }],
+                        
                         // this will block controller loading until the application has been initialized with
                         //  all required configuration (language, currency)
                         /* jshint ignore:start */

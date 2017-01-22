@@ -38,9 +38,17 @@ angular.module('ds.home')
             //   return PriceProductREST.Products.one('products', params.productId).get();
             // },
             createTender:  function(params) {
-              return TenderREST.Tenders.all('tenders').post(params).then(function(data){
+              return TenderREST.Tenders.all('tender').post(params).then(function(data){
                 console.log(data);
               });
+            },
+
+            getTenders:  function() {
+              return TenderREST.Tenders.all('tender').get();
+            },
+
+            getTender:  function(params) {
+              return TenderREST.Tenders.one('tender', params.tenderId).get();
             }
         };
 }]);
