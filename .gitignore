@@ -12,7 +12,6 @@ public/js/app/shared/i18n/lang/*.json
 .idea
 coverage/
 config/config.js
-dist
 .DS_Store
 .vscode
 typings/
