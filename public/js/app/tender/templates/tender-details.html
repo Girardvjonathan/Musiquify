@@ -1,1 +1,99 @@
-{{tender}}
+<!-- bread crumbs -->
+<ybreadcrumb yitem="breadcrumbData" size="'small'"></ybreadcrumb>
+
+<div class="tenderDetailsContainer" ng-cloak>
+    <section class="white">
+        <div class="row">
+
+
+            <!-- product details -->
+            <div class="col-md-6">
+                <div class="tender-details">
+
+                    <!-- product name -->
+                    <h1 class="pageTitle">{{tender.title}}</h1>
+
+                    <div >
+                            <span id="start-date" class="startDate">{{tender.startDate}}</span>
+                            <span id="end-date" class="endDate">{{tender.endDate}}</span>
+                            <span id="time-lenght" class="timeLength">{{tender.timeLength}}</span>
+                            <span id="type" class="type">{{tender.type}}</span>
+                            <span id="min-price" class="minPrice">{{tender.minPrice}}</span>
+                            <span id="max-price" class="maxPrice">{{tender.maxPrice}}</span>
+                            <span id="description" class="description">{{tender.description}}</span>
+                            <span id="location" class="location">{{tender.location}}</span>
+                            <span id="musical-style" class="musicalStyle">{{tender.musicalStyle}}</span>
+                            <span ng-if="product.prices[0].measurementUnit" class="price">/</span>
+                    </div>
+
+
+                    <div>
+                        <form action="" class="tenderPanel">
+
+                            <!-- product quantity -->
+                            <div class="row tender-options">
+                                <div class="col-md-8 col-md-offset-2 custom-select-container">
+                                    <div class="form-group input-group qty">
+                                        <label class="input-group-addon control-label" for="price">Your Price</label>
+                                        <input quantity-input type="number" id="price" min="1" step="1" pattern="\d*" class="form-control quantity">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <!-- error notification -->
+                                <div ng-if="error" class="col-md-8 col-md-offset-2">
+                                    <div class="error">
+                                        <small class="help-inline has-error">
+                                            {{'ERROR_ADDING_TO_CART' | translate}}
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <!-- add to cart -->
+                                <div class="col-md-8 col-md-offset-2">
+                                    <button id="submit" type="button" class="btn btn-primary btn-block submitButton" ng-click="">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <ul class="nav nav-tabs">
+                <li role="presentation" ng-class="{active: activeTab === 'description'}">
+                    <a href="" ng-click="openTab('description'); $event.preventDefault();">{{'DESCRIPTION_TAB' | translate}}</a>
+                </li>
+
+                <li role="presentation" ng-class="{active: activeTab === 'details'}">
+                    <a href="" ng-click="openTab('details'); $event.preventDefault();">{{'DETAILS_TAB' | translate}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="gray">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane" ng-class="{active: activeTab === 'description'}" id="description">
+                        <!-- product description -->
+                        <div class="headline">{{'PRODUCT_DESCRIPTION' | translate}}</div>
+
+                        <div id="product-description-text" class="description">
+                            {{tender.description}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+>>>>>>> 6f43477a739be5e352b02cf743e0aafb9e00c1da
