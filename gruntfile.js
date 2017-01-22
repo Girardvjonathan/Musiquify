@@ -32,7 +32,7 @@ module.exports = function (grunt) {
         // Syntax example for npm 2.0 parameters: $ npm run-script singleProd -- --pid=xxx --cid=123 --ruri=http://example.com
         PROJECT_ID = grunt.option('pid') || 'musiquify',
         CLIENT_ID = grunt.option('cid') || 'EdaqEf7bcpVr05365uKBT2MBK3bJv8XG',
-        REDIRECT_URI = grunt.option('ruri') || 'http://localhost:9000',
+        REDIRECT_URI = grunt.option('ruri') || 'https://musiquify.herokuapp.com',
         USE_HTTPS = grunt.option('https') || false,
         REGION_CODE = grunt.option('region') || '',
 
