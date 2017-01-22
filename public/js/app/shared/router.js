@@ -107,6 +107,9 @@ angular.module('ds.router', [])
                         /* jshint ignore:start */
                         initialized: ['ConfigSvc',function(ConfigSvc) {
                             return ConfigSvc.initializeApp();
+                        }],
+                        account: ['AccountSvc', function(AccountSvc) {
+                            return AccountSvc.account();
                         }]
                         /* jshint ignore:end */
 

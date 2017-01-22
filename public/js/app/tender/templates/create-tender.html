@@ -22,13 +22,65 @@
 				<input type="hidden" name="account" ng-model="address.account">
 
 				<!-- <localized-addresses type="addAddress"></localized-addresses> -->
-				<div class="form-group input-group"
-				ng-class="{'has-error': addressForm.contactName.$invalid && (addressForm.contactName.$dirty  || showPristineErrors)}">
-					<label class="input-group-addon control-label" for="contactName">{{'FULL_NAME' | translate}}</label>
-					<input inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}" type="text" class="form-control ui-autocomplete" id="contactName" name="contactName" ng-model="address.contactName" required autocomplete="on" ng-keydown="saveOnEnter($event, address, addressForm.$valid, addressForm.$name)"
-					ng-required="addressForm.country.$viewValue.id === 'CA'">
+				<div class="col-md-7 form-group input-group">
+					<label class="input-group-addon control-label" for="titre">Titre</label>
+					<input inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}" type="text" class="form-control ui-autocomplete" id="titre" name="titre" ng-model="tender.title" required autocomplete="on">
 				</div>
+				<!-- startDate -->
+				    <div class="col-md-7 form-group input-group">
+				        <label class="input-group-addon control-label" for="startDate">Start Date</label>
+				        <input type="text" inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}"
+				        class="form-control" id="startDate" name="startDate" ng-model="tender.startDate">
+				    </div>
 
+				<!-- location -->
+				    <div class="col-md-7 form-group input-group">
+				        <label class="input-group-addon control-label" for="location">End Date</label>
+				        <input type="text" inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}"
+				        class="form-control" id="location" name="location" ng-model="tender.location">
+				    </div>
+				<!-- timeLenght -->
+				    <div class="col-md-7 form-group input-group">
+				        <label class="input-group-addon control-label" for="timeLenght">Time lenght</label>
+				        <input type="text" inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}"
+				        class="form-control" id="timeLenght" name="timeLenght" ng-model="tender.timeLenght">
+				    </div>
+				<!-- type -->
+				    <div class="col-md-7 form-group input-group">
+				        <label class="input-group-addon control-label" for="type">Type</label>
+				        <input type="text" inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}"
+				        class="form-control" id="type" name="type" ng-model="tender.type">
+				    </div>
+				<!-- minPrice -->
+				    <div class="col-md-7 form-group input-group">
+				        <label class="input-group-addon control-label" for="minPrice">Minimum Price</label>
+				        <input type="text" inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}"
+				        class="form-control" id="minPrice" name="minPrice" ng-model="tender.minPrice">
+				    </div>
+				<!-- maxPrice -->
+				    <div class="col-md-7 form-group input-group">
+				        <label class="input-group-addon control-label" for="maxPrice">Maximum Price</label>
+				        <input type="text" inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}"
+				        class="form-control" id="maxPrice" name="maxPrice" ng-model="tender.maxPrice">
+				    </div>
+				<!-- description -->
+				    <div class="col-md-7 form-group input-group">
+				        <label class="input-group-addon control-label" for="description">Description</label>
+				        <input type="text" inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}"
+				        class="form-control" id="description" name="description" ng-model="tender.description">
+				    </div>
+				<!-- location -->
+				    <div class="col-md-7 form-group input-group">
+				        <label class="input-group-addon control-label" for="location">Location</label>
+				        <input type="text" inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}"
+				        class="form-control" id="location" name="location" ng-model="tender.location">
+				    </div>
+				<!-- musicalStyle -->
+				    <div class="col-md-7 form-group input-group">
+				        <label class="input-group-addon control-label" for="musicalStyle">Style</label>
+				        <input type="text" inline-error-input inline-error-input-required-message="{{'REQUIRED' | translate}}"
+				        class="form-control" id="musicalStyle" name="musicalStyle" ng-model="tender.musicalStyle">
+				    </div>
 
 				<!-- Errors -->
 				<ul ng-if="errors && errors.length" class="list-unstyled text-danger">
