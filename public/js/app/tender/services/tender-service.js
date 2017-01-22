@@ -49,6 +49,7 @@ angular.module('ds.home')
 
             getTender:  function(params) {
               return TenderREST.Tenders.one('tender', params.tenderId).get();
+
             }
         };
 }]);
