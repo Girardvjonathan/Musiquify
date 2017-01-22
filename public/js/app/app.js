@@ -71,7 +71,16 @@ window.app = angular.module('ds.app', [
                 headers: _.extend(headers, oldHeaders),
                 httpConfig: httpConfig
             };
+
+
         });
+
+
+
+        // RestangularProvider.setDefaultHeaders({
+        //     'Content-Type': 'application/json',
+        //     'X-Requested-With': 'XMLHttpRequest'
+        // });
     }])
 
     .run(['$rootScope', '$injector','ConfigSvc', 'AuthDialogManager', '$location', 'settings', 'TokenSvc',

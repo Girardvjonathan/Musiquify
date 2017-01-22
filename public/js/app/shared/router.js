@@ -139,6 +139,34 @@ angular.module('ds.router', [])
                     }
                 })
 
+                .state('base.tenderDetails', {
+                    views: {
+                        'main@':{
+                            templateUrl: 'js/app/tender/templates/tender-details.html',
+                            controller: 'TenderDetailsCtrl'
+                        }
+                    },
+                    url: '/tenders/:tenderId',
+                    resolve:{
+                        account: ['AccountSvc', function(AccountSvc) {
+                            return AccountSvc.account();
+                        }],
+                        
+                        tender: ['$stateParams', 'TenderSvc', 'initialized', function ($stateParams, TenderSvc, initialized) {
+                            if(initialized){
+                                return TenderSvc.getTender({tenderId: $stateParams.tenderId});
+                            }
+                        }],
+
+                        // this will block controller loading until the application has been initialized with
+                        //  all required configuration (language, currency)
+                        /* jshint ignore:start */
+                        initialized: ['ConfigSvc',function(ConfigSvc) {
+                            return ConfigSvc.initializeApp();
+                        }]
+                        /* jshint ignore:end */
+                    }
+                })
                 .state('base.category', {
                     url: '/ct/:catName',
                     views: {

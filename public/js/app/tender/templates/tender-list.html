@@ -1,9 +1,11 @@
-<div ng-if="tenders">
-	<article class="tender-item" ng-repeat="tender in tenders">
-		<a ui-sref="base.tenderDetails( {tenderId: tender.id} )">
-			<h1>{{tender.title}}</h1>
-			<h2>{{tender.type}}</h2>
-			<span class="price-range">${{tender.minPrice}} - ${{tender.maxPrice}}</span>
-		</a>
-	</article>
-</div>
+<section class="white">
+	<div class="row" ng-if="tenders">
+		<article class="col-12 tender-item" ng-repeat="tender in tenders">
+			<a ui-sref="base.tenderDetails( {tenderId: tender.id} )">
+				<h1>{{tender.title}}</h1>
+				<h2>{{tender.type}}</h2>
+				<span class="price-range">${{tender.minPrice}} - ${{tender.maxPrice}}</span>
+			</a>
+		</article>
+	</div>
+</section>
